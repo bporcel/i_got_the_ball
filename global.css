@@ -1,0 +1,31 @@
+body {
+    color: #FFF;
+    background-color: #000;
+}
+
+h1 {
+    font-size: 50px;
+    margin: 20px 0;
+    font-weight: 400;
+}
+
+p {
+    font-size: 20px;
+}
+
+.screen-center {
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    justify-content: center;
+    align-items: center;
+    grid-gap: 20px;
+}
