@@ -5,24 +5,6 @@ const { formatMoney, calculatePrize } = require("./MoneyUtils.js")
 const app = Router();
 const stripe = require("stripe")('sk_test_51PIuVU01Btym0RJXQ8gsn5SAJkiAYaA4wJJznNiKThle0Xtj8GsuyOl4R4ern4s9IQP4rC9F7WlFeWQVsGot2iBl00B3unod3i');
 
-app.post("/create-payment-intent", async (req, res) => {
-    const { items } = req.body;
-
-    // Create a PaymentIntent with the order amount and currency
-    const paymentIntent = await stripe.paymentIntents.create({
-        amount: 12000,
-        currency: "eur",
-        // In the latest version of the API, specifying the `automatic_payment_methods` parameter is optional because Stripe enables its functionality by default.
-        automatic_payment_methods: {
-            enabled: true,
-        },
-    });
-
-    res.send({
-        clientSecret: paymentIntent.client_secret,
-    });
-});
-
 app.get("/ball-owner", async (req, res) => {
 
     const owner = await getBallOwner();
@@ -48,15 +30,14 @@ app.get("/prize", async (req, res) => {
 });
 
 app.get("/min-payment", async (req, res) => {
+    // const { payment } = await getHighestPayment();
+    // const minPayment = payment + 100;
 
-    const { payment } = await getHighestPayment();
-    const minPayment = payment + 100;
+    // console.log('Minimum Payment => ', formatMoney(minPayment))
 
-    console.log('Minimum Payment => ', formatMoney(minPayment))
-
-    res.send({
-        payment: formatMoney(minPayment),
-    });
+    // res.send({
+    //     payment: formatMoney(minPayment),
+    // });
 });
 
 module.exports = app;

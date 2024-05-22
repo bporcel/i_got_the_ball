@@ -7,6 +7,7 @@
     <meta name="description"
         content="Who Has The Ball: A unique game where the highest bidder wins the ball! Pay more to take control and compete with others in real-time. Join the fun and start bidding now!">
     <script src="https://js.stripe.com/v3/"></script>
+    <script async src="https://js.stripe.com/v3/buy-button.js"></script>
     <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
     <script type="text/javascript" src="payment.js"></script>
     <script type="text/javascript" src="http.js"></script>
@@ -39,25 +40,15 @@
             <circle r="50" cx="50" cy="50" fill="white" />
         </svg>
         <p>
-            <span id="ball-owner"></span> has the ball <button id="claim-button" onclick="renderForm()">Claim
+            <span id="ball-owner"></span> has the ball <button id="claim-button" onclick="renderBuyButton()">Claim
                 it</button>
         </p>
     </div>
     <p id="login-warning" class="login-warning"></p>
     <p class="winner">Winner takes <span id="claim"></span></p>
 
-    <form id="payment-form" class="hidden">
-        <div id="link-element"></div>
-        <div id="payment-element">
-            <!-- Stripe.js injects the Payment Element -->
-        </div>
-        <br>
-        <button id="submit">
-            <div class="spinner hidden" id="spinner"></div>
-            <span id="button-text">Get the ball</span>
-        </button>
-        <div id="payment-message" class="hidden"></div>
-    </form>
+    <div id="buy-button">
+    </div>
 </body>
 
 </html>

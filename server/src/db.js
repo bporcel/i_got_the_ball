@@ -31,7 +31,9 @@ async function getHighestPayment() {
 
     if (error) {
         console.log('Error getting highest payment => ', error);
-        return;
+        return {
+            payment: 0
+        };
     }
 
     return payment[0];
@@ -54,4 +56,15 @@ async function getTotalPayment() {
     return { payment: totalPayment };
 }
 
-module.exports = { getBallOwner, getHighestPayment, getTotalPayment };
+async function postUserPayment(amount, userId) {
+    const { error } = await supabase
+        .from('s-1_payment')
+        .insert({ payment: amount, user_id: userId });
+
+    if (error) {
+        console.log('Error posting user payment => ', error);
+        return;
+    }
+}
+
+module.exports = { getBallOwner, getHighestPayment, getTotalPayment, postUserPayment };
