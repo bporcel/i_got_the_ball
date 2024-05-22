@@ -1,5 +1,13 @@
 function formatMoney(amount) {
-    return amount / 100;
+    const formatter = Intl.NumberFormat(
+        'es-ES',
+        {
+            style: 'currency',
+            currency: 'EUR'
+        }
+    );
+
+    return formatter.format(amount / 100);
 }
 
 function calculatePrize(totalPayment, highestPayment) {

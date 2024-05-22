@@ -3,15 +3,18 @@ const stripe = Stripe("pk_test_51PIuVU01Btym0RJXsFKVqyth9qMmMh108saxDNXWszDxDcp1
 
 let elements;
 
-function renderForm() {
-  document.querySelector("#claim-button").disabled = true;
-  initialize();
-  checkStatus();
+async function renderForm() {
+  if (await isLoggedIn()) {
+    document.querySelector("#claim-button").disabled = true;
+    initialize();
+    checkStatus();
 
-  document
-    .querySelector("#payment-form")
-    .addEventListener("submit", handleSubmit);
-  console.log('renderForm func')
+    document
+      .querySelector("#payment-form")
+      .addEventListener("submit", handleSubmit);
+  } else {
+    document.querySelector('#login-warning').textContent = 'Please, login before claiming';
+  }
 }
 
 
@@ -29,21 +32,25 @@ async function initialize() {
   };
   elements = stripe.elements({ appearance, clientSecret });
 
-  const paymentElementOptions = {
-    layout: "accordion",
-  }
-
-  const linkElementOptions = {
-    email: "test@email.com",
-  };
-
-  const linkElement = elements.create("linkAuthentication", linkElementOptions);
+  const linkElement = elements.create(
+    "linkAuthentication",
+    {
+      defaultValues: {
+        email: "test@email.com",
+      }
+    }
+  );
   linkElement.mount("#link-element");
 
-  const paymentElement = elements.create("payment", paymentElementOptions);
+  const paymentElement = elements.create(
+    "payment",
+    {
+      layout: "accordion",
+    }
+  );
   paymentElement.mount("#payment-element");
 
-  document.querySelector("#submit").classList.remove("hidden");
+  document.querySelector("#payment-form").classList.remove("hidden");
 }
 
 async function handleSubmit(e) {
@@ -60,7 +67,6 @@ async function handleSubmit(e) {
 
   if (!error) {
     document.querySelector("#claim-button").disabled = false;
-    document.querySelector("#submit").classList.add("hidden");
   }
 
   // This point will only be reached if there is an immediate error when

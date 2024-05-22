@@ -29,9 +29,9 @@ app.get("/ball-owner", async (req, res) => {
 
     console.log('server owner => ', owner)
 
-    res.send({
-        owner: owner.display_name,
-    });
+    // res.send({
+    //     owner: owner.display_name,
+    // });
 });
 
 app.get("/prize", async (req, res) => {
@@ -42,8 +42,20 @@ app.get("/prize", async (req, res) => {
 
     console.log('Prize => ', formatMoney(prize))
 
+    // res.send({
+    //     payment: formatMoney(prize),
+    // });
+});
+
+app.get("/min-payment", async (req, res) => {
+
+    const { payment } = await getHighestPayment();
+    const minPayment = payment + 100;
+
+    console.log('Minimum Payment => ', formatMoney(minPayment))
+
     res.send({
-        payment: formatMoney(prize),
+        payment: formatMoney(minPayment),
     });
 });
 
