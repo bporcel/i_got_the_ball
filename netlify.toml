@@ -1,6 +1,6 @@
 [build]
   base = "client/"
-  functions = "server/"
+  functions = "server/src"
   publish = "dist/"
 
 [functions]
@@ -12,3 +12,15 @@
   from = "/api/*"
   status = 200
   to = "/.netlify/functions/api/:splat"
+
+[[redirects]]
+  force = true
+  from = "/webhook-stripe/*"
+  to = "/.netlify/functions/server/webhook-stripe"
+  status = 200
+
+[[redirects]]
+  force = true
+  from = "/webhook/*"
+  to = "/.netlify/functions/server/webhook"
+  status = 200
