@@ -5,7 +5,7 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 async function getBallOwner() {
-  const response = await fetch("http://localhost:4242/api/ball-owner", {
+  const response = await fetch("/.netlify/functions/server/api/ball-owner", {
     method: "GET",
     headers: { "Content-Type": "application/json" }
   });
