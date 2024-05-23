@@ -2,10 +2,18 @@ window.addEventListener('DOMContentLoaded', () => {
   getBallOwner();
   getPrize();
   getMinPayment();
+  test();
 });
 
+async function test() {
+  await fetch("/api", {
+    method: "GET",
+    headers: { "Content-Type": "application/json" }
+  });
+}
+
 async function getBallOwner() {
-  const response = await fetch("/.netlify/functions/server/api/ball-owner", {
+  const response = await fetch("/api/ball-owner", {
     method: "GET",
     headers: { "Content-Type": "application/json" }
   });

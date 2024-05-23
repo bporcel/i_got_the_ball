@@ -9,13 +9,13 @@
   node_bundler = "esbuild"
 
 [[redirects]]
-  force = true
+  # force = true
   from = "/api/*"
   status = 200
-  to = "/.netlify/functions/api/:splat"
+  to = "/.netlify/functions/server/:splat"
 
-# [[redirects]]
-#   force = true
-#   from = "/webhook/*"
-#   to = "/.netlify/functions/webhook/:splat"
-#   status = 200
+[[redirects]]
+  # force = true
+  from = "/webhook/*"
+  to = "/.netlify/functions/server/:splat"
+  status = 200
