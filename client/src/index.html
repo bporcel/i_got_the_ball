@@ -6,13 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
         content="Who Has The Ball: A unique game where the highest bidder wins the ball! Pay more to take control and compete with others in real-time. Join the fun and start bidding now!">
-    <script src="https://js.stripe.com/v3/"></script>
     <script async src="https://js.stripe.com/v3/buy-button.js"></script>
-    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
-    <script type="text/javascript" src="payment.js"></script>
-    <script type="text/javascript" src="http.js"></script>
-    <script type="text/javascript" src="auth.js"></script>
-    <script type="text/javascript" src="user.js"></script>
+    <script type="module" src="main.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -40,8 +35,7 @@
             <circle r="50" cx="50" cy="50" fill="white" />
         </svg>
         <p>
-            <span id="ball-owner"></span> has the ball <button id="claim-button" onclick="renderBuyButton()">Claim
-                it</button>
+            <span id="ball-owner"></span> has the ball <button id="claim-button" onclick="renderBuyButton()">Claim it</button>
         </p>
     </div>
     <p id="login-warning" class="login-warning"></p>

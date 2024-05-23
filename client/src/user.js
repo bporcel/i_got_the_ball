@@ -1,16 +1,17 @@
+import { supabase } from './auth'
+
 window.addEventListener('DOMContentLoaded', () => {
     renderUserData();
 });
 
 async function renderUserData() {
-    const { data: { user }, error } = await _supabase.auth.getUser();
+    const { data: { user }, error } = await supabase.auth.getUser();
 
     if (error) {
         console.log('Authentication error => ', error);
         const userCard = `
-            <button onclick="login()">Login</button>
+            <button onclick='login()'>Login</button>
         `;
-
         document.querySelector('#user-card').innerHTML = userCard;
         return;
     }
@@ -28,8 +29,8 @@ async function renderUserData() {
     document.querySelector('#user-card').innerHTML = userCard;
 }
 
-async function getUserEmail() {
-    const { data: { user }, error } = await _supabase.auth.getUser();
+export async function getUserEmail() {
+    const { data: { user }, error } = await supabase.auth.getUser();
 
     if (error) {
         console.log('Authentication error => ', error);
@@ -39,8 +40,8 @@ async function getUserEmail() {
     return user.email
 }
 
-async function getUserId() {
-    const { data: { user }, error } = await _supabase.auth.getUser();
+export async function getUserId() {
+    const { data: { user }, error } = await supabase.auth.getUser();
 
     if (error) {
         console.log('Authentication error => ', error);

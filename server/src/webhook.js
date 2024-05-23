@@ -1,8 +1,11 @@
+require('dotenv').config()
 const { Router } = require("express");
 const { postUserPayment } = require("./db.js");
 
-const stripe = require("stripe")('sk_test_51PIuVU01Btym0RJXQ8gsn5SAJkiAYaA4wJJznNiKThle0Xtj8GsuyOl4R4ern4s9IQP4rC9F7WlFeWQVsGot2iBl00B3unod3i');
-const endpointSecret = "whsec_cf385a7fdaffbade96591b03cf4a027d124bf6b90ebb4137433c31198d41055f";
+const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY;
+const WEBHOOK_STRIPE_SECRET_KEY = process.env.WEBHOOK_STRIPE_SECRET_KEY;
+const stripe = require("stripe")(STRIPE_SECRET_KEY);
+const endpointSecret = WEBHOOK_STRIPE_SECRET_KEY;
 
 const app = Router();
 

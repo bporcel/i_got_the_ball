@@ -3,7 +3,6 @@ const { getBallOwner, getHighestPayment, getTotalPayment } = require("./db.js")
 const { formatMoney, calculatePrize } = require("./MoneyUtils.js")
 
 const app = Router();
-const stripe = require("stripe")('sk_test_51PIuVU01Btym0RJXQ8gsn5SAJkiAYaA4wJJznNiKThle0Xtj8GsuyOl4R4ern4s9IQP4rC9F7WlFeWQVsGot2iBl00B3unod3i');
 
 app.get("/ball-owner", async (req, res) => {
 

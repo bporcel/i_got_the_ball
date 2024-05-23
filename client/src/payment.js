@@ -1,15 +1,15 @@
-// This is your test publishable API key.
-const stripe = Stripe("pk_test_51PIuVU01Btym0RJXsFKVqyth9qMmMh108saxDNXWszDxDcp1kpBBtTyQZ6R5aCpgpUIDhyOB1JhPaI84GBkWd7Ms006Ok7qIPn");
+import { isLoggedIn } from './auth';
+import { getUserEmail, getUserId } from './user';
 
-let elements;
+const STRIPE_PUBLISHABLE_KEY = import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY
 
-async function renderBuyButton() {
+export async function renderBuyButton() {
   if (await isLoggedIn()) {
     document.querySelector("#claim-button").disabled = true;
     document.querySelector("#buy-button").innerHTML = `
     <stripe-buy-button
       buy-button-id="buy_btn_1PJGHy01Btym0RJXIpyraWVl"
-      publishable-key="pk_test_51PIuVU01Btym0RJXsFKVqyth9qMmMh108saxDNXWszDxDcp1kpBBtTyQZ6R5aCpgpUIDhyOB1JhPaI84GBkWd7Ms006Ok7qIPn"
+      publishable-key="${STRIPE_PUBLISHABLE_KEY}"
       customer-email="${await getUserEmail()}"
       client-reference-id="${await getUserId()}"
       >

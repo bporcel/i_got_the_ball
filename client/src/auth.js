@@ -1,19 +1,22 @@
-const { createClient } = supabase
-const _supabase = createClient('https://tlmwywzrefmfiakuqinf.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRsbXd5d3pyZWZtZmlha3VxaW5mIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTYzMTk3MzUsImV4cCI6MjAzMTg5NTczNX0.6QDE2FskwQBZ6nkzzZFrdVf_7rEX0D_dh8nE_0WHvBg')
+import { createClient } from '@supabase/supabase-js'
 
-async function login() {
-    await _supabase.auth.signInWithOAuth(
+const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL
+const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY
+export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+
+export async function login() {
+    await supabase.auth.signInWithOAuth(
         {
             provider: 'google'
         }
     );
 }
 
-async function logout() {
-    await _supabase.auth.signOut();
+export async function logout() {
+    await supabase.auth.signOut();
 }
 
-async function isLoggedIn() {
-    const { error } = await _supabase.auth.getUser();
+export async function isLoggedIn() {
+    const { error } = await supabase.auth.getUser();
     return error ? false : true;
 }

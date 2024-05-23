@@ -27,12 +27,12 @@ async function getPrize() {
 }
 
 async function getMinPayment() {
-  const response = await fetch("http://localhost:4242/min-payment", {
-    method: "GET",
-    headers: { "Content-Type": "application/json" }
-  });
-  const { payment } = await response.json();
+  // const response = await fetch("http://localhost:4242/min-payment", {
+  //   method: "GET",
+  //   headers: { "Content-Type": "application/json" }
+  // });
+  // const { payment } = await response.json();
 
-  console.log('Prize =>', payment)
-  document.querySelector('#min-payment').textContent = `${payment}` ?? '0';
+  // console.log('Prize =>', payment)
+  // document.querySelector('#min-payment').textContent = `${payment}` ?? '0';
 }

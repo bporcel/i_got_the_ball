@@ -1,9 +1,9 @@
+require('dotenv').config()
 const { createClient } = require('@supabase/supabase-js')
 
-const supabaseUrl = 'https://tlmwywzrefmfiakuqinf.supabase.co'
-// const supabaseKey = process.env.SUPABASE_KEY
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRsbXd5d3pyZWZtZmlha3VxaW5mIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTYzMTk3MzUsImV4cCI6MjAzMTg5NTczNX0.6QDE2FskwQBZ6nkzzZFrdVf_7rEX0D_dh8nE_0WHvBg'
-const supabase = createClient(supabaseUrl, supabaseKey)
+const SUPABASE_URL = process.env.SUPABASE_URL;
+const SUPABASE_SECRET_KEY = process.env.SUPABASE_SECRET_KEY;
+const supabase = createClient(SUPABASE_URL, SUPABASE_SECRET_KEY);
 
 async function getBallOwner() {
     let { data: payment, error } = await supabase
