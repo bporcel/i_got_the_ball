@@ -12,10 +12,10 @@
   force = true
   from = "/api/*"
   status = 200
-  to = "/.netlify/functions/server/api/:splat"
+  to = "/.netlify/functions/api/:splat"
 
-[[redirects]]
-  force = true
-  from = "/webhook/*"
-  to = "/.netlify/functions/server/webhook/:splat"
-  status = 200
+# [[redirects]]
+#   force = true
+#   from = "/webhook/*"
+#   to = "/.netlify/functions/webhook/:splat"
+#   status = 200
