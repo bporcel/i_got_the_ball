@@ -8,7 +8,7 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_SECRET_KEY);
 async function getBallOwner() {
     let { data: payment, error } = await supabase
         .from('s-1_payment')
-        .select('display_name')
+        .select('payment')
         .order('payment', { ascending: false })
         .limit(1);
 

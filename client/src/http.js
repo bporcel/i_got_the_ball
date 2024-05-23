@@ -5,18 +5,18 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 async function getBallOwner() {
-  // const response = await fetch("http://localhost:4242/ball-owner", {
-  //   method: "GET",
-  //   headers: { "Content-Type": "application/json" }
-  // });
-  // const { owner } = await response.json();
+  const response = await fetch("http://localhost:4242/api/ball-owner", {
+    method: "GET",
+    headers: { "Content-Type": "application/json" }
+  });
+  const { owner } = await response.json();
 
-  // console.log('Owner =>', owner)
-  // document.querySelector('#ball-owner').textContent = owner ?? 'No one';
+  console.log('Owner =>', owner)
+  document.querySelector('#ball-owner').textContent = owner ?? 'No one';
 }
 
 async function getPrize() {
-  // const response = await fetch("http://localhost:4242/prize", {
+  // const response = await fetch("http://localhost:4242/api/prize", {
   //   method: "GET",
   //   headers: { "Content-Type": "application/json" }
   // });
@@ -27,7 +27,7 @@ async function getPrize() {
 }
 
 async function getMinPayment() {
-  // const response = await fetch("http://localhost:4242/min-payment", {
+  // const response = await fetch("http://localhost:4242/api/min-payment", {
   //   method: "GET",
   //   headers: { "Content-Type": "application/json" }
   // });

@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const serverless = require('serverless-http');
 const controller = require("./controller.js")
 const webhook = require("./webhook.js")
 
@@ -12,4 +13,6 @@ app.use(express.json());
 app.use(controller);
 app.use(webhook);
 
-app.listen(4242, () => console.log("Node server listening on port 4242!"));
+export const handler = serverless(app);
+
+// app.listen(4242, () => console.log("Node server listening on port 4242!"));
