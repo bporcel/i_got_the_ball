@@ -4,6 +4,10 @@ const { formatMoney, calculatePrize } = require("./MoneyUtils.js")
 
 const app = Router();
 
+app.get("", async (req, res) => {
+    res.send('Health-check')
+});
+
 app.get("/ball-owner", async (req, res) => {
 
     const owner = await getBallOwner();
