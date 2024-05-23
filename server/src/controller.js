@@ -4,7 +4,7 @@ const { formatMoney, calculatePrize } = require("./MoneyUtils.js")
 
 const app = Router();
 
-app.get("/api/ball-owner", async (req, res) => {
+app.get("/ball-owner", async (req, res) => {
 
     const owner = await getBallOwner();
 
@@ -15,7 +15,7 @@ app.get("/api/ball-owner", async (req, res) => {
     });
 });
 
-app.get("/api/prize", async (req, res) => {
+app.get("/prize", async (req, res) => {
 
     const highestPayment = await getHighestPayment();
     const totalPayment = await getTotalPayment();
@@ -28,7 +28,7 @@ app.get("/api/prize", async (req, res) => {
     // });
 });
 
-app.get("/api/min-payment", async (req, res) => {
+app.get("/min-payment", async (req, res) => {
     // const { payment } = await getHighestPayment();
     // const minPayment = payment + 100;
 

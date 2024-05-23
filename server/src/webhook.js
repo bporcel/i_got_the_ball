@@ -9,7 +9,7 @@ const endpointSecret = WEBHOOK_STRIPE_SECRET_KEY;
 
 const app = Router();
 
-app.post('/webhook-stripe', (req, res) => {
+app.post('/stripe', (req, res) => {
     const sig = req.headers['stripe-signature'];
 
     let event;
