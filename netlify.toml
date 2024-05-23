@@ -1,7 +1,8 @@
 [build]
-  base = "client/"
-  functions = "../server/src"
-  publish = "dist/"
+  base = "/"
+  functions = "server/src/"
+  publish = "client/dist/"
+  command = "npm run build-app"
 
 [functions]
   external_node_modules = ["express"]

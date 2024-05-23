@@ -1,0 +1,14 @@
+{
+  "name": "i_got_the_ball",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build-app": "npm run build-server && npm run build-client",
+    "build-client": "cd client && npm install && npm run build-prod",
+    "build-server": "cd server && npm install"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
