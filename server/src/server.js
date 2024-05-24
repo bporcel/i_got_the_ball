@@ -14,5 +14,3 @@ app.use('/api/', controller);
 app.use('/webhook/', webhook);
 
 module.exports.handler = serverless(app);
-
-// app.listen(4242, () => console.log("Node server listening on port 4242!"));

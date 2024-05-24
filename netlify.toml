@@ -1,7 +1,6 @@
 [dev]
   command = "npm run dev --prefix client"
   framework = "#custom"
-  # targetPort = 3000
 
 [build]
   base = "/"
@@ -14,13 +13,11 @@
   node_bundler = "esbuild"
 
 [[redirects]]
-  # force = true
   from = "/api/*"
   status = 200
   to = "/.netlify/functions/server/:splat"
 
 [[redirects]]
-  # force = true
   from = "/webhook/*"
   to = "/.netlify/functions/server/:splat"
   status = 200

@@ -10,8 +10,5 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "netlify-cli": "^17.23.6"
-  }
+  "license": "ISC"
 }
